@@ -23,18 +23,18 @@ public record AuthHandler(UserRepository userRepository) implements Handler {
                     .get(() -> userRepository.findByToken(token.get()))
                     // if user exists, add it to registry and pass to downstream
                     .then(user -> {
-                       if(user!=null) {
-                           ctx.next(Registry.single(User.class, user));
-                       } else {
-                           ctx.getResponse()
-                                   .status(HttpResponseStatus.FORBIDDEN.code())
-                                   .send(HttpResponseStatus.FORBIDDEN.reasonPhrase());
-                       }
+                        if (user != null) {
+                            ctx.next(Registry.single(User.class, user));
+                        } else {
+                            ctx.getResponse()
+                                    .status(HttpResponseStatus.FORBIDDEN.code())
+                                    .send(HttpResponseStatus.FORBIDDEN.reasonPhrase());
+                        }
                     });
 
-        }
-        else ctx.getResponse()
+        } else ctx.getResponse()
                 .status(HttpResponseStatus.UNAUTHORIZED.code())
-                .send(HttpResponseStatus.UNAUTHORIZED.reasonPhrase());;
+                .send(HttpResponseStatus.UNAUTHORIZED.reasonPhrase());
+        ;
     }
 }

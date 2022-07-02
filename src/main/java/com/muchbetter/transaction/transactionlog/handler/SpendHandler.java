@@ -27,7 +27,7 @@ public record SpendHandler(UserRepository userRepository) implements Handler {
             // exception if currency mismatch
             if (!tx.currency().equals(loggedInUser.currency()))
                 ExceptionHandler.render(ctx, ERR_CURRENCY_MSG);
-            // exception if funds not available
+                // exception if funds not available
             else if (remainingBalance.compareTo(BigDecimal.ZERO) < 0)
                 ExceptionHandler.render(ctx, ERR_FUNDS);
             else {

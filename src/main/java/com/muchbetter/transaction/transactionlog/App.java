@@ -1,7 +1,6 @@
 package com.muchbetter.transaction.transactionlog;
 
 import com.muchbetter.transaction.transactionlog.handler.*;
-import com.muchbetter.transaction.transactionlog.model.DBType;
 import com.muchbetter.transaction.transactionlog.repository.UserRepository;
 import com.muchbetter.transaction.transactionlog.repository.impl.UserRepositoryInMemory;
 import com.muchbetter.transaction.transactionlog.repository.impl.UserRepositoryRedis;
@@ -45,7 +44,7 @@ public class App {
         if (System.getenv("REDIS_URL") != null) {
             log.info("Using REDIS db as backend");
             return new UserRepositoryRedis();
-        } else{
+        } else {
             // DEFAULT
             log.warn("REDIS_URL not found. Using IN_MEMORY db by default");
             return new UserRepositoryInMemory();

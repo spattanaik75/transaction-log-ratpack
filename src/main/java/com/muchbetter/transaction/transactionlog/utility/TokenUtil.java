@@ -6,7 +6,12 @@ import java.util.UUID;
 
 @UtilityClass
 public class TokenUtil {
-    public static String getToken(){
+    /**
+     * It generates a random string of 32 characters, which is a combination of numbers and letters
+     *
+     * @return A random string of characters.
+     */
+    public static String getToken() {
         return UUID.randomUUID().toString().replace("-", "").toUpperCase();
     }
 }
