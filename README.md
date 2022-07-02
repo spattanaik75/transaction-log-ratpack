@@ -65,7 +65,10 @@ curl --location --request POST 'localhost:5050/spend' \
 ```
 ## Questions
 * How long did you spend on the coding test? What would you add to your solution if you spent more time on it? If you didn't spend much time on the coding test then use this as an opportunity to explain what you would add.
-  * 1.5 days. Spock as testing framework. Guice for DI. and Somehow to imitate @ControllerAdvice from springboot
+  * 1 day. Took half a day to go through ratpack documentation. and rest coding the solution 
+  * I could add tests using Spock as testing framework 
+  * Guice for DI
+  * And some mechanism to imitate @ControllerAdvice from springboot
 * What was the most useful feature that was added to Java 8? Please include a snippet of code that shows how you've used it.
   * Functional Programming
   * Streams
