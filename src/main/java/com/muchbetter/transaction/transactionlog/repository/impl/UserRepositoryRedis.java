@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class UserRepositoryRedis implements UserRepository {
-    private final JedisPooled jedis = new JedisPooled("redis://localhost:6379");
+//    private final JedisPooled jedis = new JedisPooled("redis://localhost:6379");
+    private final JedisPooled jedis = new JedisPooled(System.getenv("REDIS_URL"));
     private final ObjectMapper objectMapper = new ObjectMapper();
     private static final String DB = "users:";
 
