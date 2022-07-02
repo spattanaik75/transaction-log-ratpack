@@ -1,5 +1,6 @@
 package com.muchbetter.transaction.transactionlog.repository;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.muchbetter.transaction.transactionlog.model.User;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public interface UserRepository {
      * @param user The user object to be saved.
      * @return The user object that was saved.
      */
-    User save(User user);
+    User save(User user) throws JsonProcessingException;
 
     /**
      * Find all users.
@@ -26,7 +27,7 @@ public interface UserRepository {
      * @param token The token that was generated when the user was created.
      * @return A User object.
      */
-    User findByToken(String token);
+    User findByToken(String token) throws JsonProcessingException;
 
     /**
      * Delete a user by token.

@@ -2,14 +2,15 @@ package com.muchbetter.transaction.transactionlog;
 
 import com.muchbetter.transaction.transactionlog.handler.*;
 import com.muchbetter.transaction.transactionlog.repository.UserRepository;
-import com.muchbetter.transaction.transactionlog.repository.impl.UserRepositoryInMemory;
+import com.muchbetter.transaction.transactionlog.repository.impl.UserRepositoryRedis;
 import ratpack.core.server.RatpackServer;
 
 
 public class App {
 
     public static void main(String[] args) throws Exception {
-        UserRepository userRepository = new UserRepositoryInMemory();
+//        UserRepository userRepository = new UserRepositoryInMemory();
+        UserRepository userRepository = new UserRepositoryRedis();
 
         RatpackServer.start(server -> server
 //                .registry(
