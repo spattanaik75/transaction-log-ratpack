@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "ece96cbd-cb2e-44b6-9abd-95501621082a",
+		"name": "transaction-log",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:5050/login",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "balance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5050/balance",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"balance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5050/transactions",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "spend",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"date\": \"2007-12-03T10:17:33\",\r\n   \"description\": \"Something-test1\",\r\n   \"amount\": 10000.00,\r\n   \"currency\": \"ZAR\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5050/spend",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"spend"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "0BB8F25D793941B18E018BD3350B91C7",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
