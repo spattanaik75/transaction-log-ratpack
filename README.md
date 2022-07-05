@@ -77,7 +77,9 @@ kubectl create service clusterip t-log-app --tcp=5050:5050 --dry-run=client -o=y
 kubectl apply -f . -n default
 $ kubectl port-forward svc/demo 5050:5050
 ```
-(generated yamls are provided in /k8s folder
+(generated yamls are provided in /k8s folder)
+
+Please specify the REDIS_URL in deployement.yaml if you want to connect to external redis. by default, it uses inMem store
 
 ## Questions
 * How long did you spend on the coding test? What would you add to your solution if you spent more time on it? If you didn't spend much time on the coding test then use this as an opportunity to explain what you would add.
