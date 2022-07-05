@@ -63,14 +63,32 @@ curl --location --request POST 'localhost:5050/spend' \
 
 }'
 ```
+
+## Kubernetes Deployment
+(Exhausted all my online free subscriptions) 
+The script to install this app locally with k8s is as follows: 
+```shell
+cd k8s
+kubectl create deployment t-log-app --image=docker.io/spattanaik75/t-log-ratpack:latest --dry-run=client -o=yaml > deployment.yaml
+kubectl create service clusterip t-log-app --tcp=5050:5050 --dry-run=client -o=yaml > service.yaml
+```
+
+```shell
+kubectl apply -f . -n default
+$ kubectl port-forward svc/demo 5050:5050
+```
+(generated yamls are provided in /k8s folder
+
 ## Questions
 * How long did you spend on the coding test? What would you add to your solution if you spent more time on it? If you didn't spend much time on the coding test then use this as an opportunity to explain what you would add.
-  * 1 day. Took half a day to go through ratpack documentation. and rest coding the solution 
-  * I could add tests using Spock as testing framework 
-  * Guice for DI
-  * And some mechanism to imitate @ControllerAdvice from springboot
+  * 2 days. Took half a day to go through ratpack documentation. and rest coding the solution 
+  * I would add:
+    * Guice for DI
+    * Modify ErrorResponses to Proper error object
+    * Find some way to implement @ControllerAdvice from springboot
+    * I would like to explore quarkus/micronaut vs ratpack perf testing
 * What was the most useful feature that was added to Java 8? Please include a snippet of code that shows how you've used it.
-  * Functional Programming
+  * Functional Programming (used in this project a lot)
   * Streams
 * What is your favourite framework / library / package that you love but couldn't use in the task? What do you like about it so much?
   * Springboot(Java) 

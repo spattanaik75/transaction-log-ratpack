@@ -1,9 +1,11 @@
 buildscript {
     repositories {
+        mavenCentral()
         maven {
             url "https://plugins.gradle.org/m2/"
         }
-        mavenCentral()
+        // Spock snapshots are available from the Sonatype OSS snapshot repository
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
     dependencies {
         classpath "io.ratpack:ratpack-gradle:2.0.0-rc-1"
@@ -11,16 +13,25 @@ buildscript {
     }
 }
 
+apply plugin: 'application'
 apply plugin: "idea"
 apply plugin: "io.ratpack.ratpack-java"
 apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'jacoco'
+apply plugin: 'java'
+apply plugin: 'groovy'
 
 group 'com.muchbetter.transaction'
 version '1.0-SNAPSHOT'
 
+sourceCompatibility=17
+targetCompatibility=17
+
 repositories {
     mavenLocal()
     mavenCentral()
+    // Spock snapshots are available from the Sonatype OSS snapshot repository
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 }
 
 dependencies {
@@ -33,14 +44,45 @@ dependencies {
 
     runtimeOnly "org.slf4j:slf4j-simple:1.7.36"
 
+
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    testImplementation 'org.mockito:mockito-core:4.6.1'
+
+
+    // mandatory dependencies for using Spock
+//    implementation 'org.codehaus.groovy:groovy:3.0.10'
+//    testImplementation platform("org.spockframework:spock-bom:2.1-groovy-3.0")
+//    testImplementation "org.spockframework:spock-core"
 }
 
 test {
     useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+    finalizedBy jacocoTestReport
 }
 
-task stage(dependsOn: shadowJar)
+//sourceSets {
+//    integration {
+//        java.srcDir "$projectDir/src/test/integration/java"
+//        resources.srcDir "$projectDir/src/test/integration/resources"
+//        compileClasspath += main.output + test.output
+//        runtimeClasspath += main.output + test.output
+//    }
+//}
+//
+//configurations {
+//    integrationImplementation.extendsFrom testImplementation
+//    integrationRuntime.extendsFrom testRuntime
+//}
+//
+//task integrationTest(type: Test) {
+//    testClassesDirs = sourceSets.integration.output.classesDirs
+//    classpath = sourceSets.integration.runtimeClasspath
+//}
+//
+//check.dependsOn integrationTest
 
 mainClassName = "com.muchbetter.transaction.transactionlog.App"

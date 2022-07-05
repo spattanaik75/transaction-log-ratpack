@@ -12,7 +12,7 @@ public interface UserRepository {
      * @param user The user object to be saved.
      * @return The user object that was saved.
      */
-    User save(User user) throws JsonProcessingException;
+    User save(User user);
 
     /**
      * Find all users.
@@ -27,7 +27,7 @@ public interface UserRepository {
      * @param token The token that was generated when the user was created.
      * @return A User object.
      */
-    User findByToken(String token) throws JsonProcessingException;
+    User findByToken(String token);
 
     /**
      * Delete a user by token.
